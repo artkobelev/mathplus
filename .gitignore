@@ -1,0 +1,24 @@
+#*******************************************************************
+#java specific
+*.class
+#*******************************************************************
+#maven specific
+target
+!**/src/**/target
+#*******************************************************************
+#eclipse specific
+.project
+
+.settings
+
+.externalToolBuilders
+*/.externalToolBuilders
+
+## Intellij ###
+## Directory-based project format
+.idea/
+
+## File-based project format
+*.ipr
+*.iws
+*.iml
