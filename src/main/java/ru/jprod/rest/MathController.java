@@ -1,4 +1,4 @@
-package ru.akob.rest;
+package ru.jprod.rest;
 
 import java.util.List;
 

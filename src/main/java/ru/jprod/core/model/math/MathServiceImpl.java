@@ -1,4 +1,4 @@
-package ru.akob.core.model.math;
+package ru.jprod.core.model.math;
 
 import java.util.Collection;
 
