@@ -1,5 +1,6 @@
 package ru.jprod.util;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -10,10 +11,9 @@ public class BootstrapUtils
 {
     private static final String BASE_DIR_PROPERTY = "base.dir";
     private static final String EXTERNAL_CONFIG_DIR_PROPERTY = "ext.prop.dir";
-    private static final String LOGGING_DIR_PROPERTY = "logs.dir";
     private static final String LOGBACK_CONFIG_NAME = "logback.xml";
-
     private static final Logger LOGGER = LoggerFactory.getLogger(BootstrapUtils.class);
+    private static final String LOGGING_DIR_PROPERTY = "logs.dir";
 
     public static void initProperties()
     {
@@ -48,8 +48,16 @@ public class BootstrapUtils
         }
         else
         {
+            // Configure logback.xml
             Path confPath = Paths.get(confDir);
-            System.setProperty("logging.config", confPath.resolve(LOGBACK_CONFIG_NAME).toString());
+            if (Files.exists(confPath.resolve(LOGBACK_CONFIG_NAME)))
+            {
+                System.setProperty("logging.config", confPath.resolve(LOGBACK_CONFIG_NAME).toString());
+            }
+            else
+            {
+                LOGGER.warn("logging configuration not found. Using default");
+            }
         }
     }
 }

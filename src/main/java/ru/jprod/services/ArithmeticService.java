@@ -1,8 +1,9 @@
-package ru.jprod.rest;
+package ru.jprod.services;
 
+import java.util.Collection;
 import java.util.List;
 
-public interface MathController
+public interface ArithmeticService
 {
     Double add(Double number1, Double number2);
 
@@ -16,7 +17,9 @@ public interface MathController
 
     Double mul(Double number1, Double number2);
 
+    Double neg(Double n);
+
     Double sub(Double number1, Double number2);
 
-    Double sum(List<Double> numbers);
+    Double sum(Collection<Double> numbers);
 }

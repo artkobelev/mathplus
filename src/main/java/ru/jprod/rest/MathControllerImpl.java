@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.math3.util.Precision;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,53 +15,90 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.jprod.config.ConfigProperties;
-import ru.jprod.config.DBConfigProperties;
-import ru.jprod.core.model.math.MathService;
-import ru.jprod.core.model.math.MathServiceImpl;
+import ru.jprod.config.MathProperties;
+import ru.jprod.services.ArithmeticService;
+import ru.jprod.services.ArithmeticServiceImpl;
 
 @RestController
 @RequestMapping("/rest/math")
 public class MathControllerImpl implements MathController
 {
-    @Inject
-    private ConfigProperties configProperties;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ArithmeticServiceImpl.class);
 
     @Inject
-    private DBConfigProperties dbConfigProperties;
-
+    private MathProperties mathProperties;
     @Inject
-    private MathService mathService;
+    private ArithmeticService mathService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MathServiceImpl.class);
+    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Override
+    public Double add(Double number1, Double number2)
+    {
+        LOGGER.debug("adding {} and {} with scale {}", number1, number2, mathProperties.getRounding());
+        return Precision.round(mathService.add(number1, number2), mathProperties.getRounding());
+    }
 
     @RequestMapping(value = "avg", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @Override public Double average(@RequestParam(name = "numbers") List<Double> numbers)
+    @Override
+    public Double average(@RequestParam(name = "numbers") List<Double> numbers)
     {
-        return numbers.stream().mapToDouble(val -> val).average().orElse(0.0);
+        LOGGER.debug("average of {} with scale {}", numbers, mathProperties.getRounding());
+        return Precision.round(mathService.average(numbers), mathProperties.getRounding());
     }
 
     @RequestMapping(value = "dec/{number}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @Override public Long dec(@PathVariable(name = "number") Long number)
+    @Override
+    public Long dec(@PathVariable(name = "number") Long number)
     {
-        return --number;
+        LOGGER.debug("dec {}", number);
+        return mathService.dec(number);
+    }
+
+    @RequestMapping(value = "/div", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Override
+    public Double div(Double number1, Double number2)
+    {
+        LOGGER.debug("dividing {} on {} with scale {}", number1, number2, mathProperties.getRounding());
+        return Precision.round(mathService.div(number1, number2), mathProperties.getRounding());
     }
 
     @RequestMapping(value = "/inc/{number}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @Override public Long inc(@PathVariable(name = "number") Long number)
+    @Override
+    public Long inc(@PathVariable(name = "number") Long number)
     {
-        return ++number;
+        LOGGER.debug("inc {}", number);
+        return mathService.inc(number);
+    }
+
+    @RequestMapping(value = "mul", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Override
+    public Double mul(Double number1, Double number2)
+    {
+        LOGGER.debug("multiply {} and {} with scale {}", number1, number2, mathProperties.getRounding());
+        return Precision.round(mathService.mul(number1, number2), mathProperties.getRounding());
+    }
+
+    @RequestMapping(value = "sub", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Override
+    public Double sub(Double number1, Double number2)
+    {
+        LOGGER.debug("subbing {} and {} with scale {}", number1, number2, mathProperties.getRounding());
+        return Precision.round(mathService.sub(number1, number2), mathProperties.getRounding());
     }
 
     @RequestMapping(value = "/sum", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @Override public Double sum(@RequestParam(name = "numbers") List<Double> numbers)
+    @Override
+    public Double sum(@RequestParam(name = "numbers") List<Double> numbers)
     {
-        LOGGER.debug(configProperties.getProp2());
-        LOGGER.debug(dbConfigProperties.getProp1());
-        return mathService.sum(numbers);
+        LOGGER.debug("sum of {} with scale {}", numbers, mathProperties.getRounding());
+        return Precision.round(mathService.sum(numbers), mathProperties.getRounding());
     }
 }

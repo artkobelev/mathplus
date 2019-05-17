@@ -15,7 +15,7 @@
     </parent>
 
     <dependencies>
-        <!-- Spring -->
+        <!-- Spring core -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -37,7 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-        <!-- Logback -->
+        <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -49,11 +49,54 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-        <!-- Google Utils -->
+        <!-- Utils -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>23.0</version>
+        </dependency>
+        <!-- Math specific -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.15.Final</version>
+        </dependency>
+        <!-- DataBase specific (Hibernate, etc) -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+        <!-- provide ehcache integration with hibernate -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>5.3.7.Final</version>
         </dependency>
     </dependencies>
     <build>
