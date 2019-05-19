@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.jprod.config.MathProperties;
+import ru.jprod.core.config.MathProperties;
 import ru.jprod.services.ArithmeticService;
 import ru.jprod.services.ArithmeticServiceImpl;
 
 @RestController
 @RequestMapping("/rest/math")
-public class MathControllerImpl implements MathController
+public class MathRestControllerImpl implements MathRestController
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ArithmeticServiceImpl.class);
 

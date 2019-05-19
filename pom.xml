@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!-- Logging -->
         <dependency>
@@ -67,11 +67,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.15.Final</version>
         </dependency>
-        <!-- DataBase specific (Hibernate, etc) -->
+        <!-- DataBase specific (Hibernate, drivers) -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.7.Final</version>
+            <version>5.3.10.Final</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -88,15 +88,9 @@
             <artifactId>HikariCP</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-        </dependency>
-        <!-- provide ehcache integration with hibernate -->
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>5.3.7.Final</version>
+            <version>5.3.10.Final</version>
         </dependency>
     </dependencies>
     <build>

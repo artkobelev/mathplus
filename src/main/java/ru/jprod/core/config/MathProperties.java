@@ -1,4 +1,4 @@
-package ru.jprod.config;
+package ru.jprod.core.config;
 
 import javax.validation.constraints.Min;
 

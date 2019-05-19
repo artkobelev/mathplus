@@ -2,7 +2,7 @@ package ru.jprod.rest;
 
 import java.util.List;
 
-public interface MathController
+public interface MathRestController
 {
     Double add(Double number1, Double number2);
 
