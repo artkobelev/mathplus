@@ -15,9 +15,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import ru.jprod.core.model.dto.Exportable;
+
 @Entity
 @Table(name = "tbl_algorithm", indexes = { @Index(name = "idx_algorithm_name", columnList = "name") })
-public class Algorithm implements HasName
+public class Algorithm implements HasName, Exportable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

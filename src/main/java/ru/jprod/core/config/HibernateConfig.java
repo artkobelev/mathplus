@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cache.jcache.ConfigSettings;
 import org.hibernate.cfg.AvailableSettings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ public class HibernateConfig
      * Перечень пакетов для сканирования entity классов
      */
     private static final String[] PACKAGES_TO_SCAN = { "ru.jprod.core.model" };
+    @Value("${hibernate.javax.cache.provider}")
+    private String cacheProvider;
     @Value("${hibernate.cache.region.factory_class}")
     private String cacheRegionFactory;
     // Настройки подключения к БД
@@ -69,6 +72,8 @@ public class HibernateConfig
     private Integer maxWaitTime;
     @Value("${db.generator.hikari_minimumIdle}")
     private int minIdle;
+    @Value("${hibernate.javax.cache.missing_cache_strategy}")
+    private String missingCacheStrategy;
 
     @Bean(name = "dataSource", destroyMethod = "close")
     public DataSource getDataSource() throws SQLException
@@ -109,6 +114,8 @@ public class HibernateConfig
         props.put(AvailableSettings.USE_QUERY_CACHE, hbUseQueryCache);
         props.put(AvailableSettings.CACHE_REGION_FACTORY, cacheRegionFactory);
         props.put(AvailableSettings.NON_CONTEXTUAL_LOB_CREATION, hbNonContextualCreation);
+        props.put(ConfigSettings.PROVIDER, cacheProvider);
+        props.put(ConfigSettings.MISSING_CACHE_STRATEGY, missingCacheStrategy);
         return factory.buildSessionFactory(new StandardServiceRegistryBuilder().applySettings(props).build());
     }
 

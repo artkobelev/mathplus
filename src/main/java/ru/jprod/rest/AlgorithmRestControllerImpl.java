@@ -5,9 +5,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,19 +17,23 @@ import com.google.common.base.Preconditions;
 
 import ru.jprod.core.model.Algorithm;
 import ru.jprod.core.model.algorithm.dao.DAOAlgorithm;
+import ru.jprod.core.model.dto.DtoMapper;
+import ru.jprod.core.model.dto.MapperService;
 import ru.jprod.util.TxRunner;
+import ru.jprod.util.ValidationUtils;
 
 @RestController
 @RequestMapping("/rest/algth")
 public class AlgorithmRestControllerImpl implements AlgorithmRestController
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AlgorithmRestControllerImpl.class);
-
     @Inject
     private DAOAlgorithm daoAlgorithm;
 
     @Inject
-    private SessionFactory sessionFactory;
+    private MapperService mapper;
+
+    @Inject
+    private ValidationUtils validationUtils;
 
     @Override
     @RequestMapping(value = "/{algthName}", method = RequestMethod.POST)
@@ -40,15 +41,13 @@ public class AlgorithmRestControllerImpl implements AlgorithmRestController
     public long create(@PathVariable("algthName") String name, @RequestBody Map<String, Object> data)
     {
         Preconditions.checkNotNull(data);
-
         return TxRunner.call(() -> {
             daoAlgorithm.checkAbsent(name);
-            //            Endpoint endpoint = mapper.restore(data);
-            //            endpoint.setName(name);
-            //            validUtils.validate(endpoint);
-            Algorithm alg = new Algorithm();
-            alg.setName(name);
-            return daoAlgorithm.save(alg);
+            data.put(DtoMapper.TYPE, Algorithm.class.getName());
+            Algorithm algorithm = mapper.restore(data);
+            algorithm.setName(name);
+            validationUtils.validate(algorithm);
+            return daoAlgorithm.save(algorithm);
         });
     }
 
@@ -62,6 +61,7 @@ public class AlgorithmRestControllerImpl implements AlgorithmRestController
 
     @Override
     @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
     public List<String> getAll()
     {
         return TxRunner.call(() -> {
@@ -70,8 +70,15 @@ public class AlgorithmRestControllerImpl implements AlgorithmRestController
     }
 
     @Override
-    public void update(String name, Map<String, Object> data)
+    @RequestMapping(value = "/{algthName}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("algthName") String name, @RequestBody Map<String, Object> data)
     {
-
+        Preconditions.checkNotNull(data);
+        TxRunner.run(() -> {
+            Algorithm algorithm = mapper.update(data, daoAlgorithm.getExisting(name));
+            validationUtils.validate(algorithm);
+            daoAlgorithm.update(algorithm);
+        });
     }
 }
