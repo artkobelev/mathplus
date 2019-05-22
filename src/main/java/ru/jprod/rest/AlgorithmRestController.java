@@ -5,6 +5,12 @@ import java.util.Map;
 
 import ru.jprod.core.model.Algorithm;
 
+/**
+ * Методы REST контроллера для работы с алгоритмом {@link Algorithm}
+ *
+ * @author akobelev
+ * @since 21.05.2019
+ */
 public interface AlgorithmRestController
 {
     /**

@@ -17,6 +17,12 @@ import javax.validation.constraints.Size;
 
 import ru.jprod.core.model.dto.Exportable;
 
+/**
+ * Объект описывает алгоритм
+ *
+ * @author akobelev
+ * @since 21.05.2019
+ */
 @Entity
 @Table(name = "tbl_algorithm", indexes = { @Index(name = "idx_algorithm_name", columnList = "name") })
 public class Algorithm implements HasName, Exportable
@@ -26,11 +32,18 @@ public class Algorithm implements HasName, Exportable
     @Column(name = "id")
     private long id;
 
+    /**
+     * Имя алгоритма
+     */
     @Column(nullable = false, length = NAME_MAX_LENGTH)
     @NotNull(message = "{mathplus.validation.NotNull}")
     @Size(min = NAME_MIN_LENGTH, max = NAME_MAX_LENGTH, message = "{mathplus.validation.Size}")
     @Pattern(regexp = NAME_REGEX, message = "{mathplus.validation.Pattern}")
     private String name;
+
+    @NotNull(message = "{mathplus.validation.NotNull}")
+    @Column(name = "script")
+    private String script;
 
     public long getId()
     {

@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ru.jprod.util.exceptions.MathplusException;
+
 public class BootstrapUtils
 {
     private static final String BASE_DIR_PROPERTY = "base.dir";
@@ -28,10 +30,7 @@ public class BootstrapUtils
         Path baseDir;
         if (null == path)
         {
-            path = Paths.get("").toString();
-            System.setProperty(BASE_DIR_PROPERTY, path);
-            LOGGER.warn(String.format(
-                    "'%s' property is not set. Using current directory as base dir", BASE_DIR_PROPERTY));
+            throw new MathplusException("'base.dir' property is not set");
         }
         baseDir = Paths.get(path);
 
