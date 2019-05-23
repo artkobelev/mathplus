@@ -3,16 +3,23 @@ package ru.jprod.util.context;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * Вспомогательные методы для работы с spring
+ *
+ * @author akobelev
+ * @since 20.05.2019
+ */
 @Component(SpringUtils.BEAN_NAME)
-public class SpringUtils implements ApplicationContextAware
+public class SpringUtils
 {
     public static final String BEAN_NAME = "springUtils";
 
+    /**
+     * Инстанс класса
+     */
     private static SpringUtils instance;
 
     @Inject
@@ -23,16 +30,14 @@ public class SpringUtils implements ApplicationContextAware
         return instance;
     }
 
+    /**
+     * Получить контекст приложения
+     *
+     * @return контекст
+     */
     public ApplicationContext getApplicationContext()
     {
         return context;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext ac)
-            throws BeansException
-    {
-        context = ac;
     }
 
     @PostConstruct

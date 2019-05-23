@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
+import org.flywaydb.core.api.configuration.FluentConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -40,14 +41,15 @@ public class FlyWayConfig
     @DependsOn(SpringUtils.BEAN_NAME)
     public Flyway getFlyWay() throws SQLException
     {
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(dataSource);
-        flyway.setLocations(FLYWAY_LOCATIONS);
+        FluentConfiguration configuration = new FluentConfiguration()
+                .dataSource(dataSource)
+                .locations(FLYWAY_LOCATIONS);
+        Flyway flyway = configuration.load();
         if (isEmptyMigration(flyway))
         {
             // Пропускаем все миграции на пустой базе
             MigrationInfo[] pending = flyway.info().pending();
-            flyway.setBaselineVersion(pending[pending.length - 1].getVersion());
+            flyway = configuration.baselineVersion(pending[pending.length - 1].getVersion()).load();
             flyway.baseline();
         }
         else
