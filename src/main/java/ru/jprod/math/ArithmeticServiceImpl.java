@@ -1,10 +1,15 @@
-package ru.jprod.services;
+package ru.jprod.math;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Выполнение арифметических операций
+ *
+ * @author artem
+ * @since 21.05.2019
+ */
 @Service
 public class ArithmeticServiceImpl implements ArithmeticService
 {
@@ -15,7 +20,7 @@ public class ArithmeticServiceImpl implements ArithmeticService
     }
 
     @Override
-    public Double average(List<Double> numbers)
+    public Double average(Collection<Double> numbers)
     {
         return numbers.stream().mapToDouble(val -> val).average().orElse(0.0);
     }
@@ -45,9 +50,9 @@ public class ArithmeticServiceImpl implements ArithmeticService
     }
 
     @Override
-    public Double neg(Double n)
+    public Double neg(Double number)
     {
-        return -n;
+        return -number;
     }
 
     @Override

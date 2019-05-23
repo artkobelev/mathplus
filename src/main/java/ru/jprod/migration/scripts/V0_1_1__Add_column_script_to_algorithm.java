@@ -12,12 +12,12 @@ import ru.jprod.util.sql.column.ColumnDefinitions;
 import ru.jprod.util.sql.constraint.NotNullConstraint;
 
 /**
- * Добавить к таблице {@link Algorithm} столбец 'script'. Ограничения: NOT NULL
+ * Добавление к таблице {@link Algorithm} столбца 'script' с ограничением NOT NULL
  *
- * @author akobelev
+ * @author artem
  * @since 22.05.2019
  */
-public class V0_1_1__Add_column_script_in_algorithm extends MigrationBaseScript
+public class V0_1_1__Add_column_script_to_algorithm extends MigrationBaseScript
 {
     @Override
     public void migrate(JdbcTemplate template, Connection connection) throws Exception

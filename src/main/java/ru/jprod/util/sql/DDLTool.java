@@ -15,6 +15,11 @@ import ru.jprod.util.sql.dialect.DDLDialect;
 import ru.jprod.util.sql.dialect.H2DDLDialect;
 import ru.jprod.util.sql.dialect.PostgresDDLDialect;
 
+/**
+ * Класс для получения и изменения объектаов базы данных посредством DDL
+ *
+ * @since 22.05.2019
+ */
 public class DDLTool
 {
     private static final String ADD_COLUMN_SQL = "ALTER TABLE %s ADD %s %s";
@@ -30,16 +35,33 @@ public class DDLTool
         this.connection = connection;
     }
 
+    /**
+     * Проверить, что текущая БД H2
+     *
+     * @return true - БД H2, false - иначе
+     */
     public static boolean isH2SQL()
     {
         return DIALECT instanceof H2DDLDialect;
     }
 
+    /**
+     * Проверить, что текущая БД Postgres
+     *
+     * @return true - БД Postgres, false - иначе
+     */
     public static boolean isPostgres()
     {
         return DIALECT instanceof PostgresDDLDialect;
     }
 
+    /**
+     * Создать столбец в таблице
+     *
+     * @param table  имя таблицы
+     * @param column модель столбца
+     * @throws SQLException
+     */
     public void createColumn(String table, ColumnDefinition column) throws SQLException
     {
         executeUpdate(String.format(ADD_COLUMN_SQL + createNotNullSqlOrEmpty(column), table, column.getName(),
@@ -54,22 +76,37 @@ public class DDLTool
         }
     }
 
-    public int executeUpdate(String sql) throws SQLException
+    /**
+     * Выполнить SQL скрипт
+     *
+     * @param sql скрипт
+     */
+    public void executeUpdate(String sql) throws SQLException
     {
         LOGGER.info("Start query: " + sql);
         try (Statement st = getConnection().createStatement())
         {
-            int count = st.executeUpdate(sql);
+            st.executeUpdate(sql);
             LOGGER.info("\tDone query: " + sql);
-            return count;
         }
     }
 
+    /**
+     * Получить соединение
+     *
+     * @return соединение
+     */
     public Connection getConnection()
     {
         return connection;
     }
 
+    /**
+     * Сгенерировать SQL скрипт для установки ограничения "NOT NULL" для столбца, если ограничение задано
+     *
+     * @param column модель столбца
+     * @return SQL скрипт
+     */
     private String createNotNullSqlOrEmpty(ColumnDefinition column)
     {
         Constraint notNullConstraint = column.getConstraints().stream().filter(e -> e instanceof NotNullConstraint)

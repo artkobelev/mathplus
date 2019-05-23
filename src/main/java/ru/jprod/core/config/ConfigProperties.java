@@ -2,7 +2,13 @@ package ru.jprod.core.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "app")
+/**
+ * Конфигурация приложения
+ *
+ * @author artem
+ * @since 23.05.2019
+ */
+@ConfigurationProperties(prefix = "mathplus")
 public class ConfigProperties
 {
     private String prop1;

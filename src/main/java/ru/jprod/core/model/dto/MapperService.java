@@ -2,6 +2,12 @@ package ru.jprod.core.model.dto;
 
 import java.util.Map;
 
+/**
+ * Интерфейс для преобразования сущностей в {@link DtObject} и наоборот
+ *
+ * @author artem
+ * @since 20.05.2019
+ */
 public interface MapperService
 {
     /**

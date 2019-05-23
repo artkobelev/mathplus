@@ -8,7 +8,7 @@ import ru.jprod.core.model.Algorithm;
 /**
  * Методы REST контроллера для работы с алгоритмом {@link Algorithm}
  *
- * @author akobelev
+ * @author artem
  * @since 21.05.2019
  */
 public interface AlgorithmRestController
@@ -32,9 +32,17 @@ public interface AlgorithmRestController
     /**
      * Получение списка имен {@link Algorithm}
      *
-     * @return - список имен
+     * @return список имен
      */
     List<String> getAll();
+
+    /**
+     * Получение данных о алгоритме по имени
+     *
+     * @param name имя
+     * @return данные объекта
+     */
+    Map<String, Object> getByName(String name);
 
     /**
      * Обновление Algorithm по имени

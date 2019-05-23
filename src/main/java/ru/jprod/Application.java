@@ -9,6 +9,12 @@ import ru.jprod.core.config.ConfigProperties;
 import ru.jprod.core.config.MathProperties;
 import ru.jprod.util.BootstrapUtils;
 
+/**
+ * Класс старта приложения
+ *
+ * @author artem
+ * @since 20.05.2019
+ */
 @SpringBootApplication
 @EnableConfigurationProperties({ ConfigProperties.class, MathProperties.class })
 @PropertySource("classpath:/ValidationMessages.properties")

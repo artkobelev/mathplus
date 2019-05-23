@@ -15,16 +15,13 @@ import com.fasterxml.jackson.databind.ObjectReader;
 
 /**
  * Десериализатор из JSON для DtObject
- *
- * @author pmuravev
- * @since May 18, 2015
  */
 public class DtoDeserializer extends JsonDeserializer<DtObject>
 {
-    //@formatter:off
     private static final TypeReference<HashMap<String, Object>> MAP_TYPE_REF =
-            new TypeReference<HashMap<String, Object>>(){};
-    //@formatter:on
+            new TypeReference<HashMap<String, Object>>()
+            {
+            };
 
     private static final ObjectReader READER = new ObjectMapper().readerFor(MAP_TYPE_REF);
 

@@ -11,7 +11,7 @@
     </appender>
 
     <!-- Loggers -->
-    <logger name="ru.jprod.services.ArithmeticServiceImpl" level="debug"/>
+    <logger name="ru.jprod.math.ArithmeticServiceImpl" level="debug"/>
     <logger name="ru.jprod.rest.AlgorithmRestControllerImpl" level="debug"/>
 
     <!-- Root -->

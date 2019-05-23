@@ -21,10 +21,17 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+/**
+ * Настройки бина подключения к БД
+ *
+ * @author artem
+ * @since 21.05.2019
+ */
 @Configuration
 public class HibernateConfig
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateConfig.class);
+
     /**
      * Перечень пакетов для сканирования entity классов
      */
@@ -33,7 +40,6 @@ public class HibernateConfig
     private String cacheProvider;
     @Value("${hibernate.cache.region.factory_class}")
     private String cacheRegionFactory;
-    // Настройки подключения к БД
     @Value("${db.driver}")
     private String dbDriver;
     @Value("${db.password}")
@@ -42,7 +48,6 @@ public class HibernateConfig
     private String dbURL;
     @Value("${db.user}")
     private String dbUser;
-    // Настройки hibernate
     @Value("${hibernate.dialect}")
     private String hbDialect;
     @Value("${hibernate.format_sql}")
@@ -76,6 +81,12 @@ public class HibernateConfig
     @Value("${hibernate.javax.cache.missing_cache_strategy}")
     private String missingCacheStrategy;
 
+    /**
+     * Бин подключения к {@link DataSource}
+     *
+     * @return
+     * @throws SQLException
+     */
     @Bean(name = "dataSource", destroyMethod = "close")
     public DataSource getDataSource() throws SQLException
     {
@@ -99,6 +110,12 @@ public class HibernateConfig
         return dataSource;
     }
 
+    /**
+     * Настройка бина {@link SessionFactory}
+     *
+     * @return
+     * @throws SQLException
+     */
     @Bean(name = "sessionFactory")
     @DependsOn(FlyWayConfig.BEAN_NAME)
     public SessionFactory getSessionFactory() throws SQLException

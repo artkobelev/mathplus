@@ -1,6 +1,6 @@
 package ru.jprod.rest;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.inject.Inject;
 
@@ -16,9 +16,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.jprod.core.config.MathProperties;
-import ru.jprod.services.ArithmeticService;
-import ru.jprod.services.ArithmeticServiceImpl;
+import ru.jprod.math.ArithmeticService;
+import ru.jprod.math.ArithmeticServiceImpl;
 
+/**
+ * Методы REST контроллера для выполнения арифметических операций
+ *
+ * @author artem
+ * @since 21.05.2019
+ */
 @RestController
 @RequestMapping("/rest/math")
 public class MathRestControllerImpl implements MathRestController
@@ -42,7 +48,7 @@ public class MathRestControllerImpl implements MathRestController
     @RequestMapping(value = "avg", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
-    public Double average(@RequestParam(name = "numbers") List<Double> numbers)
+    public Double average(@RequestParam(name = "numbers") Collection<Double> numbers)
     {
         LOGGER.debug("average of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.average(numbers), mathProperties.getRounding());
@@ -96,7 +102,7 @@ public class MathRestControllerImpl implements MathRestController
     @RequestMapping(value = "/sum", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
-    public Double sum(@RequestParam(name = "numbers") List<Double> numbers)
+    public Double sum(@RequestParam(name = "numbers") Collection<Double> numbers)
     {
         LOGGER.debug("sum of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.sum(numbers), mathProperties.getRounding());

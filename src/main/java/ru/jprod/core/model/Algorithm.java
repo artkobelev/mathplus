@@ -20,7 +20,7 @@ import ru.jprod.core.model.dto.Exportable;
 /**
  * Объект описывает алгоритм
  *
- * @author akobelev
+ * @author artem
  * @since 21.05.2019
  */
 @Entity
@@ -35,12 +35,15 @@ public class Algorithm implements HasName, Exportable
     /**
      * Имя алгоритма
      */
-    @Column(nullable = false, length = NAME_MAX_LENGTH)
+    @Column(nullable = false, name = HasName.NAME)
     @NotNull(message = "{mathplus.validation.NotNull}")
     @Size(min = NAME_MIN_LENGTH, max = NAME_MAX_LENGTH, message = "{mathplus.validation.Size}")
     @Pattern(regexp = NAME_REGEX, message = "{mathplus.validation.Pattern}")
     private String name;
 
+    /**
+     * Скрипт алгоритма
+     */
     @NotNull(message = "{mathplus.validation.NotNull}")
     @Column(name = "script")
     private String script;
@@ -56,6 +59,11 @@ public class Algorithm implements HasName, Exportable
         return name;
     }
 
+    public String getScript()
+    {
+        return script;
+    }
+
     public void setId(long id)
     {
         this.id = id;
@@ -64,5 +72,10 @@ public class Algorithm implements HasName, Exportable
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public void setScript(String script)
+    {
+        this.script = script;
     }
 }

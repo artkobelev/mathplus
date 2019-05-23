@@ -7,6 +7,9 @@ import org.hibernate.SessionFactory;
 
 /**
  * Общаяя логика DAO.
+ *
+ * @author artem
+ * @since 20.05.2019
  */
 public abstract class AbstractDAO
 {

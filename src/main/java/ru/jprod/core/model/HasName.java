@@ -7,5 +7,10 @@ public interface HasName
 {
     String NAME = "name";
 
+    /**
+     * Получить имя
+     *
+     * @return имя
+     */
     String getName();
 }

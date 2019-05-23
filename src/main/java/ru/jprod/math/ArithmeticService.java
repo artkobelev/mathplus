@@ -1,14 +1,14 @@
-package ru.jprod.rest;
+package ru.jprod.math;
 
 import java.util.Collection;
 
 /**
- * Методы REST контроллера для выполнения арифметических операций
+ * Выполнение арифметических операций
  *
  * @author artem
  * @since 21.05.2019
  */
-public interface MathRestController
+public interface ArithmeticService
 {
     /**
      * Найти сумму двух чисел
@@ -60,6 +60,14 @@ public interface MathRestController
      * @return произведение двух чисел
      */
     Double mul(Double number1, Double number2);
+
+    /**
+     * Изменить знак числа
+     *
+     * @param number число
+     * @return число с противоположным знаком
+     */
+    Double neg(Double number);
 
     /**
      * Найти разность двух чисел

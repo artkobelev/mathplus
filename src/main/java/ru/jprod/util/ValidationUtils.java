@@ -15,6 +15,9 @@ import com.google.common.base.Joiner;
 
 /**
  * Класс, содержащий утилитарные методы для валидации объектов
+ *
+ * @author artem
+ * @since 23.05.2019
  */
 @Component
 public class ValidationUtils

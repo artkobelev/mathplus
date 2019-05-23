@@ -11,6 +11,8 @@ import ru.jprod.util.exceptions.ObjectNotFoundException;
  * Базовый интерфейс для DAO
  *
  * @param <T> Класс объектов
+ * @author artem
+ * @since 20.05.2019
  */
 public interface DAO<T extends HasName>
 {

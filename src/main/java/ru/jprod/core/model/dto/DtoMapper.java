@@ -7,8 +7,8 @@ import java.util.Map;
  * Маппер {@link Exportable} объектов из/в {@link DtObject}
  *
  * @param <T>
- * @author pmuravev
- * @since May 19, 2015
+ * @author artem
+ * @since 20.05.2019
  */
 public abstract class DtoMapper<T extends Exportable>
 {

@@ -15,6 +15,12 @@ import com.google.common.collect.Maps;
 
 import ru.jprod.util.exceptions.MathplusException;
 
+/**
+ * Методы для преобразования сущностей в {@link Map} и наоборот
+ *
+ * @author artem
+ * @since 20.05.2019
+ */
 @Component
 public class MapperServiceImpl implements MapperService
 {

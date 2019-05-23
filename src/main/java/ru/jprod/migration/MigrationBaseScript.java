@@ -7,6 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * Основной класс для миграций.
+ *
+ * @author artem
+ * @since 22.05.2019
+ */
 public abstract class MigrationBaseScript implements SpringJdbcMigration
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(MigrationBaseScript.class);

@@ -16,7 +16,7 @@ import ru.jprod.util.context.SpringUtils;
 /**
  * Настройки бина миграций {@link Flyway}
  *
- * @author akobelev
+ * @author artem
  * @since 21.05.2019
  */
 @Configuration
@@ -43,7 +43,7 @@ public class FlyWayConfig
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
         flyway.setLocations(FLYWAY_LOCATIONS);
-        if (isEmptyDB(flyway))
+        if (isEmptyMigration(flyway))
         {
             // Пропускаем все миграции на пустой базе
             MigrationInfo[] pending = flyway.info().pending();
@@ -57,7 +57,13 @@ public class FlyWayConfig
         return flyway;
     }
 
-    private boolean isEmptyDB(Flyway flyway)
+    /**
+     * Проверить наличие миграций в БД
+     *
+     * @param flyway объект манипулирования миграциями
+     * @return true - миграции выполнялись, false - иначе
+     */
+    private boolean isEmptyMigration(Flyway flyway)
     {
         return null == flyway.info().current();
     }

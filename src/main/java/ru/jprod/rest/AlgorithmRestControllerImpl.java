@@ -22,6 +22,12 @@ import ru.jprod.core.model.dto.MapperService;
 import ru.jprod.util.TxRunner;
 import ru.jprod.util.ValidationUtils;
 
+/**
+ * Методы REST контроллера для работы с алгоритмом {@link Algorithm}
+ *
+ * @author artem
+ * @since 21.05.2019
+ */
 @RestController
 @RequestMapping("/rest/algth")
 public class AlgorithmRestControllerImpl implements AlgorithmRestController
@@ -66,6 +72,16 @@ public class AlgorithmRestControllerImpl implements AlgorithmRestController
     {
         return TxRunner.call(() -> {
             return daoAlgorithm.getAllNames();
+        });
+    }
+
+    @Override
+    @RequestMapping(value = "/{algthName}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, Object> getByName(@PathVariable("algthName") String name)
+    {
+        return TxRunner.call(() -> {
+            return mapper.packToMap(daoAlgorithm.getExisting(name));
         });
     }
 
