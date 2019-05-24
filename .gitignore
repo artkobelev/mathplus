@@ -3,14 +3,12 @@
 *.class
 #*******************************************************************
 #maven specific
-target
+*/target
 !**/src/**/target
 #*******************************************************************
 #eclipse specific
 .project
-
 .settings
-
 .externalToolBuilders
 */.externalToolBuilders
 
@@ -24,6 +22,6 @@ target
 *.iml
 
 ## Project specific
-conf
-logs
-data
+*/conf
+*/logs
+*/data

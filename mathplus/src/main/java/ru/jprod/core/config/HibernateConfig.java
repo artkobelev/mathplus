@@ -106,7 +106,6 @@ public class HibernateConfig
 
         config.validate();
         DataSource dataSource = new HikariDataSource(config);
-
         return dataSource;
     }
 
