@@ -26,8 +26,8 @@ import ru.jprod.math.ArithmeticServiceImpl;
  * @since 21.05.2019
  */
 @RestController
-@RequestMapping("/rest/math")
-public class MathRestControllerImpl implements MathRestController
+@RequestMapping("/rest/arithm")
+public class ArithmeticRestControllerImpl implements ArithmeticRestController
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ArithmeticServiceImpl.class);
 

@@ -8,7 +8,7 @@ import java.util.Collection;
  * @author artem
  * @since 21.05.2019
  */
-public interface MathRestController
+public interface ArithmeticRestController
 {
     /**
      * Найти сумму двух чисел
