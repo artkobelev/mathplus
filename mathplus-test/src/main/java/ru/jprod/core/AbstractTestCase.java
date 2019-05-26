@@ -43,7 +43,7 @@ public abstract class AbstractTestCase
     @AfterClass
     public static void afterClass()
     {
-        cleaner.clean(Cleaner.QUEUE_MODE.CLASS);
+        cleaner.clean(Cleaner.QueueMode.CLASS);
     }
 
     /**
@@ -52,7 +52,7 @@ public abstract class AbstractTestCase
     @BeforeClass
     public static void beforeClass()
     {
-        cleaner.switchTo(Cleaner.QUEUE_MODE.CLASS);
+        cleaner.switchTo(Cleaner.QueueMode.CLASS);
     }
 
     /**
@@ -61,7 +61,7 @@ public abstract class AbstractTestCase
     @After
     public void after()
     {
-        cleaner.clean(Cleaner.QUEUE_MODE.TEST);
+        cleaner.clean(Cleaner.QueueMode.TEST);
     }
 
     /**
@@ -70,6 +70,6 @@ public abstract class AbstractTestCase
     @Before
     public void before()
     {
-        cleaner.switchTo(Cleaner.QUEUE_MODE.TEST);
+        cleaner.switchTo(Cleaner.QueueMode.TEST);
     }
 }

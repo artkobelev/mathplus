@@ -9,8 +9,6 @@ import static org.hamcrest.Matchers.notNullValue;
 import static ru.jprod.core.model.algorithm.Algorithm.NAME_PROPERTY;
 import static ru.jprod.core.model.algorithm.Algorithm.SCRIPT_PROPERTY;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -127,7 +125,7 @@ public class DSLAlgorithm
              .get(AlgorithmConstants.ALGORITHM_URI)
         .then()
              .extract()
-             .as(HashMap.class);
+             .as(Map.class);
         //@formatter:on
 
         Algorithm algorithm = DAOAlgorithm.create(params.get(NAME_PROPERTY));
@@ -151,7 +149,7 @@ public class DSLAlgorithm
              .get(AlgorithmConstants.ROOT_URI)
         .then()
              .extract()
-             .as(ArrayList.class);
+             .as(List.class);
         //@formatter:on
     }
 

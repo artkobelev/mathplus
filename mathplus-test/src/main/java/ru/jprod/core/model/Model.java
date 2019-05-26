@@ -12,7 +12,7 @@ import ru.jprod.cleaner.ICleanable;
  * @author artem
  * @since 25.05.19
  */
-public class Model implements ICleanable
+public abstract class Model implements ICleanable
 {
     protected Map<String, Object> properties = Maps.newHashMap();
     private boolean needClean = false;

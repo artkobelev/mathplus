@@ -7,8 +7,8 @@ import java.util.LinkedList;
  * Клинер тестовых данных. Работает в двух режимах:
  *
  * <ul>
- * <li>в режиме добавления/удаления в очередь для тестового теста</li>
- * <li>в режиме добавления/удаления в очередь для тестового класса</li>
+ * <li>в режиме работы с очередью для тестового метода</li>
+ * <li>в режиме работы с очередью для тестового класса</li>
  * </ul>
  *
  * @author artem
@@ -19,7 +19,7 @@ public class Cleaner
     /**
      * Типы очередей клинера
      */
-    public enum QUEUE_MODE
+    public enum QueueMode
     {
         /**
          * Режим с очередью для тестового метода
@@ -40,7 +40,7 @@ public class Cleaner
 
     private static final Cleaner cleaner = new Cleaner();
 
-    private QUEUE_MODE queueMode = QUEUE_MODE.TEST;
+    private QueueMode queueMode = QueueMode.TEST;
 
     private Cleaner()
     {
@@ -69,7 +69,7 @@ public class Cleaner
      *
      * @param queueMode тип очереди
      */
-    public void clean(QUEUE_MODE queueMode)
+    public void clean(QueueMode queueMode)
     {
         Deque<ICleanable> queue = queueMode.getQueue();
         while (queue.size() > 0)
@@ -87,7 +87,7 @@ public class Cleaner
      *
      * @return режим
      */
-    public QUEUE_MODE currentMode()
+    public QueueMode currentMode()
     {
         return queueMode;
     }
@@ -107,7 +107,7 @@ public class Cleaner
      *
      * @param queueMode режим
      */
-    public void switchTo(QUEUE_MODE queueMode)
+    public void switchTo(QueueMode queueMode)
     {
         this.queueMode = queueMode;
     }
