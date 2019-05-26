@@ -17,16 +17,16 @@ import java.util.LinkedList;
 public class Cleaner
 {
     /**
-     * Режик клинера
+     * Типы очередей клинера
      */
-    public enum MODE
+    public enum QUEUE_MODE
     {
         /**
-         * Режим работы с очередью для тестового метода
+         * Режим с очередью для тестового метода
          */
         TEST,
         /**
-         * Режим работы с очередью для тестового класса
+         * Режим с очередью для тестового класса
          */
         CLASS;
 
@@ -40,7 +40,7 @@ public class Cleaner
 
     private static final Cleaner cleaner = new Cleaner();
 
-    private MODE mode = MODE.TEST;
+    private QUEUE_MODE queueMode = QUEUE_MODE.TEST;
 
     private Cleaner()
     {
@@ -57,39 +57,39 @@ public class Cleaner
     }
 
     /**
-     * Очистить очередь объектов
+     * Очистить текущую очередь
      */
     public void clean()
     {
-        clean(mode);
+        clean(queueMode);
     }
 
     /**
      * Очистить очередь объектов
      *
-     * @param mode очередь для удаления
+     * @param queueMode тип очереди
      */
-    public void clean(MODE mode)
+    public void clean(QUEUE_MODE queueMode)
     {
-        Deque<ICleanable> queue = mode.getQueue();
+        Deque<ICleanable> queue = queueMode.getQueue();
         while (queue.size() > 0)
         {
-            ICleanable elem = queue.removeLast();
-            if (elem.isNeedClean())
+            ICleanable last = queue.removeLast();
+            if (last.isNeedClean())
             {
-                elem.clean();
+                last.clean();
             }
         }
     }
 
     /**
-     * Получить режим
+     * Получить текущий режим
      *
      * @return режим
      */
-    public MODE getMode()
+    public QUEUE_MODE currentMode()
     {
-        return mode;
+        return queueMode;
     }
 
     /**
@@ -99,16 +99,16 @@ public class Cleaner
      */
     public void push(ICleanable elem)
     {
-        mode.getQueue().add(elem);
+        queueMode.getQueue().add(elem);
     }
 
     /**
      * Установить режим
      *
-     * @param mode режим
+     * @param queueMode режим
      */
-    public void setMode(MODE mode)
+    public void switchTo(QUEUE_MODE queueMode)
     {
-        this.mode = mode;
+        this.queueMode = queueMode;
     }
 }

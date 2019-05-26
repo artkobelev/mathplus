@@ -12,6 +12,8 @@ public final class Configuration
 {
     public static final String APP_PORT_PROP = "app.port";
     private static final String APP_HOST_PROP = "app.host";
+    private static final String ARITHMETIC_DELTA_PROP = "arithm.delta";
+
     private static final String CONFIG_PROP_NAME = "config";
     private static Configuration instance;
     private Properties properties;
@@ -49,6 +51,14 @@ public final class Configuration
     public int getAppPort()
     {
         return Integer.valueOf(properties.getProperty(APP_PORT_PROP, "8080"));
+    }
+
+    /**
+     * @return погрешность вычисления
+     */
+    public double getDelta()
+    {
+        return Double.valueOf(properties.getProperty(ARITHMETIC_DELTA_PROP, "1e-5"));
     }
 
     /**

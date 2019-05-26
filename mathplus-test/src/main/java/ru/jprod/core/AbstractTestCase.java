@@ -28,11 +28,13 @@ public abstract class AbstractTestCase
 
     static
     {
+        // Настройка Rest Assured
         baseURI = "http://" + config.getAppHost() + ":" + config.getAppPort();
         RestAssured.baseURI = baseURI;
-        Awaitility.setDefaultPollInterval(Duration.ONE_SECOND);
         RestAssured.config = RestAssured.config()
                 .encoderConfig(new EncoderConfig(Consts.UTF_8.toString(), Consts.UTF_8.toString()));
+
+        Awaitility.setDefaultPollInterval(Duration.ONE_SECOND);
     }
 
     /**
@@ -41,7 +43,7 @@ public abstract class AbstractTestCase
     @AfterClass
     public static void afterClass()
     {
-        cleaner.clean(Cleaner.MODE.CLASS);
+        cleaner.clean(Cleaner.QUEUE_MODE.CLASS);
     }
 
     /**
@@ -50,7 +52,7 @@ public abstract class AbstractTestCase
     @BeforeClass
     public static void beforeClass()
     {
-        cleaner.setMode(Cleaner.MODE.CLASS);
+        cleaner.switchTo(Cleaner.QUEUE_MODE.CLASS);
     }
 
     /**
@@ -59,7 +61,7 @@ public abstract class AbstractTestCase
     @After
     public void after()
     {
-        cleaner.clean(Cleaner.MODE.TEST);
+        cleaner.clean(Cleaner.QUEUE_MODE.TEST);
     }
 
     /**
@@ -68,6 +70,6 @@ public abstract class AbstractTestCase
     @Before
     public void before()
     {
-        cleaner.setMode(Cleaner.MODE.TEST);
+        cleaner.switchTo(Cleaner.QUEUE_MODE.TEST);
     }
 }

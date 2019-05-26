@@ -21,23 +21,18 @@ public final class GenerateUtils
     }
 
     /**
-     * Cгенерировать случайное имя
+     * Сгенерировать случайное вещественное число
      *
-     * @return имя
+     * @return число
      */
-    public static String createName()
+    public static double createDouble()
     {
-        return RandomStringUtils.randomAlphabetic(DEFAULT_NAME_LENGTH);
-    }
-
-    /**
-     * Cгенерировать случайный текст
-     *
-     * @return имя
-     */
-    public static String createText()
-    {
-        return RandomStringUtils.randomAlphabetic(DEFAULT_TEXT_LENGTH);
+        double number = RandomUtils.nextDouble(0, DEFAULT_MAX_NUMBER);
+        if (RandomUtils.nextBoolean())
+        {
+            number = -number;
+        }
+        return number;
     }
 
     /**
@@ -45,7 +40,7 @@ public final class GenerateUtils
      *
      * @return число
      */
-    public static long number()
+    public static long createLong()
     {
         long number = RandomUtils.nextLong(0, DEFAULT_MAX_NUMBER);
         if (RandomUtils.nextBoolean())
@@ -56,12 +51,42 @@ public final class GenerateUtils
     }
 
     /**
+     * Cгенерировать случайное имя
+     *
+     * @return имя
+     */
+    public static String createName()
+    {
+        return RandomStringUtils.randomAlphabetic(DEFAULT_NAME_LENGTH);
+    }
+
+    /**
+     * Сгенерировать случайное положительное вещественное число
+     *
+     * @return число
+     */
+    public static double createPositiveDouble()
+    {
+        return RandomUtils.nextDouble(0.001, DEFAULT_MAX_NUMBER);
+    }
+
+    /**
      * Сгенерировать случайное целое положительное число
      *
      * @return число
      */
-    public static long positiveNumber()
+    public static long createPositiveLong()
     {
         return RandomUtils.nextLong(1, DEFAULT_MAX_NUMBER);
+    }
+
+    /**
+     * Cгенерировать случайный текст
+     *
+     * @return имя
+     */
+    public static String createText()
+    {
+        return RandomStringUtils.randomAlphabetic(DEFAULT_TEXT_LENGTH);
     }
 }
