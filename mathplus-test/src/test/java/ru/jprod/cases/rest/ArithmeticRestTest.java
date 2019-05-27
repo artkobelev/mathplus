@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.google.common.collect.Sets;
 
-import ru.jprod.ArithmeticConstants;
+import ru.jprod.rest.ArithmeticConstants;
 import ru.jprod.core.AbstractTestCase;
 import ru.jprod.core.config.Configuration;
 import ru.jprod.util.GenerateUtils;

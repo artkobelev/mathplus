@@ -20,7 +20,7 @@ import ru.jprod.math.ArithmeticService;
 import ru.jprod.math.ArithmeticServiceImpl;
 
 /**
- * Методы REST контроллера для выполнения арифметических операций
+ * REST контроллер для выполнения арифметических операций
  *
  * @author artem
  * @since 21.05.2019

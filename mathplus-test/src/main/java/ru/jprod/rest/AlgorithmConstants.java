@@ -1,4 +1,4 @@
-package ru.jprod;
+package ru.jprod.rest;
 
 /**
  * Константы для работы с REST API для работы с алгоритмом

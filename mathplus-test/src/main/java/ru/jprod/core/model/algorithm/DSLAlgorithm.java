@@ -14,7 +14,7 @@ import java.util.Map;
 
 import com.jayway.restassured.http.ContentType;
 
-import ru.jprod.AlgorithmConstants;
+import ru.jprod.rest.AlgorithmConstants;
 
 /**
  * DSL для объекта алгоритма
