@@ -1,14 +1,12 @@
-package ru.jprod.rest;
-
-import java.util.List;
+package ru.jprod.core.script.api;
 
 /**
- * Методы REST контроллера для выполнения арифметических операций
+ * API для выполнения арифметических операций
  *
  * @author artem
- * @since 21.05.2019
+ * @since 30.05.19
  */
-public interface ArithmeticRestController
+public interface ArithmeticScriptApi extends ScriptApi
 {
     /**
      * Найти сумму двух чисел
@@ -18,14 +16,6 @@ public interface ArithmeticRestController
      * @return сумма двух чисел
      */
     Double add(Double number1, Double number2);
-
-    /**
-     * Найти среднее значение чисел
-     *
-     * @param numbers числа
-     * @return среднее значение
-     */
-    Double average(List<Double> numbers);
 
     /**
      * Уменьшить значение числа на единицу
@@ -62,6 +52,14 @@ public interface ArithmeticRestController
     Double mul(Double number1, Double number2);
 
     /**
+     * Изменить знак числа
+     *
+     * @param number число
+     * @return число с противоположным знаком
+     */
+    Double neg(Double number);
+
+    /**
      * Найти разность двух чисел
      *
      * @param number1 первое число
@@ -69,12 +67,4 @@ public interface ArithmeticRestController
      * @return разность двух чисел
      */
     Double sub(Double number1, Double number2);
-
-    /**
-     * Найти сумму чисел
-     *
-     * @param numbers числа
-     * @return сумма чисел
-     */
-    Double sum(List<Double> numbers);
 }

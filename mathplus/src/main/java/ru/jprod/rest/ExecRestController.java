@@ -1,7 +1,5 @@
 package ru.jprod.rest;
 
-import org.springframework.http.ResponseEntity;
-
 /**
  * REST контроллер для выполнения скриптов
  *
@@ -16,5 +14,5 @@ public interface ExecRestController
      * @param script скрипт
      * @return результат выполнения
      */
-    ResponseEntity<String> execute(String script);
+    String execute(String script);
 }

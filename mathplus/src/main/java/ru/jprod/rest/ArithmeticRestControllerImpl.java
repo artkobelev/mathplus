@@ -1,6 +1,6 @@
 package ru.jprod.rest;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -48,7 +48,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @RequestMapping(value = "avg", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
-    public Double average(@RequestParam(name = "numbers") Collection<Double> numbers)
+    public Double average(@RequestParam(name = "numbers") List<Double> numbers)
     {
         LOGGER.debug("average of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.average(numbers), mathProperties.getRounding());
@@ -102,7 +102,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @RequestMapping(value = "/sum", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
-    public Double sum(@RequestParam(name = "numbers") Collection<Double> numbers)
+    public Double sum(@RequestParam(name = "numbers") List<Double> numbers)
     {
         LOGGER.debug("sum of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.sum(numbers), mathProperties.getRounding());

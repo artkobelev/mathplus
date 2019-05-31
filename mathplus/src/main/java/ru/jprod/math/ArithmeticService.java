@@ -1,6 +1,6 @@
 package ru.jprod.math;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Выполнение арифметических операций
@@ -25,7 +25,7 @@ public interface ArithmeticService
      * @param numbers числа
      * @return среднее значение
      */
-    Double average(Collection<Double> numbers);
+    Double average(List<Double> numbers);
 
     /**
      * Уменьшить значение числа на единицу
@@ -84,5 +84,5 @@ public interface ArithmeticService
      * @param numbers числа
      * @return сумма чисел
      */
-    Double sum(Collection<Double> numbers);
+    Double sum(List<Double> numbers);
 }

@@ -1,6 +1,6 @@
 package ru.jprod.math;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class ArithmeticServiceImpl implements ArithmeticService
     }
 
     @Override
-    public Double average(Collection<Double> numbers)
+    public Double average(List<Double> numbers)
     {
         return numbers.stream().mapToDouble(val -> val).average().orElse(0.0);
     }
@@ -62,7 +62,7 @@ public class ArithmeticServiceImpl implements ArithmeticService
     }
 
     @Override
-    public Double sum(Collection<Double> numbers)
+    public Double sum(List<Double> numbers)
     {
         return numbers.stream().mapToDouble(v -> v).sum();
     }

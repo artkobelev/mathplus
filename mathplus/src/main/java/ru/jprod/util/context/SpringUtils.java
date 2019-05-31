@@ -1,8 +1,11 @@
 package ru.jprod.util.context;
 
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +41,18 @@ public class SpringUtils
     public ApplicationContext getApplicationContext()
     {
         return context;
+    }
+
+    /**
+     * Получить все бины определенного класса
+     *
+     * @param clazz класс
+     * @param <T>
+     * @return бины заданного класса
+     */
+    public <T> Map<String, T> getBeans(Class<T> clazz)
+    {
+        return BeanFactoryUtils.beansOfTypeIncludingAncestors(context, clazz);
     }
 
     @PostConstruct

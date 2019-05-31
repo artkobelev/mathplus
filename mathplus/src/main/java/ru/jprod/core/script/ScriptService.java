@@ -1,5 +1,7 @@
 package ru.jprod.core.script;
 
+import java.util.Map;
+
 /**
  * Интерфейс для работы со скриптами
  *
@@ -15,4 +17,13 @@ public interface ScriptService
      * @return результат выполнения
      */
     Object execute(String script);
+
+    /**
+     * Выполнить скрипт
+     *
+     * @param script  тело скрипта
+     * @param context значения контекста
+     * @return результат выполнения
+     */
+    Object execute(String script, Map<String, Object> context);
 }
