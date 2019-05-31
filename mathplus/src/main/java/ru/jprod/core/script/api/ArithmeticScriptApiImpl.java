@@ -1,5 +1,8 @@
 package ru.jprod.core.script.api;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import ru.jprod.math.ArithmeticService;
@@ -26,6 +29,12 @@ public class ArithmeticScriptApiImpl implements ArithmeticScriptApi
     public Double add(Double number1, Double number2)
     {
         return arithmService.add(number1, number2);
+    }
+
+    @Override
+    public Double average(List<Number> numbers)
+    {
+        return numbers.stream().mapToDouble(val -> val.doubleValue()).average().orElse(0.0);
     }
 
     @Override
@@ -68,5 +77,11 @@ public class ArithmeticScriptApiImpl implements ArithmeticScriptApi
     public Double sub(Double number1, Double number2)
     {
         return arithmService.sub(number1, number2);
+    }
+
+    @Override
+    public Double sum(Collection<Number> numbers)
+    {
+        return numbers.stream().mapToDouble(v -> v.doubleValue()).sum();
     }
 }

@@ -8,7 +8,6 @@ package ru.jprod.core.script.api;
  */
 public interface ScriptApi
 {
-
     /**
      * Код объекта API
      *

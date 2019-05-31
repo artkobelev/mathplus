@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Type;
+
 import ru.jprod.core.model.dto.Exportable;
 
 /**
@@ -44,6 +46,7 @@ public class Algorithm implements HasName, Exportable
     /**
      * Скрипт алгоритма
      */
+    @Type(type = "org.hibernate.type.TextType")
     @NotNull(message = "{mathplus.validation.NotNull}")
     @Column(name = "script")
     private String script;

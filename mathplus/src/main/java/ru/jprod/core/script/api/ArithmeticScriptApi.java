@@ -1,5 +1,8 @@
 package ru.jprod.core.script.api;
 
+import java.util.Collection;
+import java.util.List;
+
 /**
  * API для выполнения арифметических операций
  *
@@ -16,6 +19,14 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @return сумма двух чисел
      */
     Double add(Double number1, Double number2);
+
+    /**
+     * Найти среднее значение чисел
+     *
+     * @param numbers числа
+     * @return среднее значение
+     */
+    Double average(List<Number> numbers);
 
     /**
      * Уменьшить значение числа на единицу
@@ -67,4 +78,12 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @return разность двух чисел
      */
     Double sub(Double number1, Double number2);
+
+    /**
+     * Найти сумму чисел
+     *
+     * @param numbers числа
+     * @return сумма чисел
+     */
+    Double sum(Collection<Number> numbers);
 }
