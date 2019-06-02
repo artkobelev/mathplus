@@ -1,6 +1,6 @@
 package ru.jprod.rest;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Методы REST контроллера для выполнения арифметических операций
@@ -17,7 +17,7 @@ public interface ArithmeticRestController
      * @param number2 второе число
      * @return сумма двух чисел
      */
-    Double add(Double number1, Double number2);
+    double add(double number1, double number2);
 
     /**
      * Найти среднее значение чисел
@@ -25,7 +25,7 @@ public interface ArithmeticRestController
      * @param numbers числа
      * @return среднее значение
      */
-    Double average(List<Double> numbers);
+    double average(Collection<Number> numbers);
 
     /**
      * Уменьшить значение числа на единицу
@@ -33,7 +33,7 @@ public interface ArithmeticRestController
      * @param number число
      * @return число минус 1
      */
-    Long dec(Long number);
+    long dec(long number);
 
     /**
      * Найти частное двух чисел
@@ -42,7 +42,7 @@ public interface ArithmeticRestController
      * @param number2 второе число
      * @return частное двух чисел
      */
-    Double div(Double number1, Double number2);
+    double div(double number1, double number2);
 
     /**
      * Увеличить значение числа на единицу
@@ -50,7 +50,7 @@ public interface ArithmeticRestController
      * @param number число
      * @return число плюс 1
      */
-    Long inc(Long number);
+    long inc(long number);
 
     /**
      * Найти произведение двух чисел
@@ -59,7 +59,7 @@ public interface ArithmeticRestController
      * @param number2 второе число
      * @return произведение двух чисел
      */
-    Double mul(Double number1, Double number2);
+    double mul(double number1, double number2);
 
     /**
      * Найти разность двух чисел
@@ -68,7 +68,7 @@ public interface ArithmeticRestController
      * @param number2 второе число
      * @return разность двух чисел
      */
-    Double sub(Double number1, Double number2);
+    double sub(double number1, double number2);
 
     /**
      * Найти сумму чисел
@@ -76,5 +76,5 @@ public interface ArithmeticRestController
      * @param numbers числа
      * @return сумма чисел
      */
-    Double sum(List<Double> numbers);
+    double sum(Collection<Number> numbers);
 }

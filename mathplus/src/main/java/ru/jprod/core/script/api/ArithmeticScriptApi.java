@@ -1,7 +1,6 @@
 package ru.jprod.core.script.api;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * API для выполнения арифметических операций
@@ -18,7 +17,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number2 второе число
      * @return сумма двух чисел
      */
-    Double add(Double number1, Double number2);
+    double add(double number1, double number2);
 
     /**
      * Найти среднее значение чисел
@@ -26,7 +25,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param numbers числа
      * @return среднее значение
      */
-    Double average(List<Number> numbers);
+    double average(Collection<Number> numbers);
 
     /**
      * Уменьшить значение числа на единицу
@@ -34,7 +33,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number число
      * @return число минус 1
      */
-    Long dec(Long number);
+    long dec(long number);
 
     /**
      * Найти частное двух чисел
@@ -43,7 +42,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number2 второе число
      * @return частное двух чисел
      */
-    Double div(Double number1, Double number2);
+    double div(double number1, double number2);
 
     /**
      * Увеличить значение числа на единицу
@@ -51,7 +50,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number число
      * @return число плюс 1
      */
-    Long inc(Long number);
+    long inc(long number);
 
     /**
      * Найти произведение двух чисел
@@ -60,7 +59,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number2 второе число
      * @return произведение двух чисел
      */
-    Double mul(Double number1, Double number2);
+    double mul(double number1, double number2);
 
     /**
      * Изменить знак числа
@@ -68,7 +67,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number число
      * @return число с противоположным знаком
      */
-    Double neg(Double number);
+    double neg(double number);
 
     /**
      * Найти разность двух чисел
@@ -77,7 +76,7 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param number2 второе число
      * @return разность двух чисел
      */
-    Double sub(Double number1, Double number2);
+    double sub(double number1, double number2);
 
     /**
      * Найти сумму чисел
@@ -85,5 +84,5 @@ public interface ArithmeticScriptApi extends ScriptApi
      * @param numbers числа
      * @return сумма чисел
      */
-    Double sum(Collection<Number> numbers);
+    double sum(Collection<Number> numbers);
 }

@@ -1,6 +1,6 @@
 package ru.jprod.math;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
@@ -14,56 +14,56 @@ import org.springframework.stereotype.Service;
 public class ArithmeticServiceImpl implements ArithmeticService
 {
     @Override
-    public Double add(Double number1, Double number2)
+    public double add(double number1, double number2)
     {
         return number1 + number2;
     }
 
     @Override
-    public Double average(List<Double> numbers)
+    public double average(Collection<Number> numbers)
     {
-        return numbers.stream().mapToDouble(val -> val).average().orElse(0.0);
+        return numbers.stream().mapToDouble(val -> val.doubleValue()).average().orElse(0.0);
     }
 
     @Override
-    public Long dec(Long number)
+    public long dec(long number)
     {
-        return --number;
+        return number - 1;
     }
 
     @Override
-    public Double div(Double number1, Double number2)
+    public double div(double number1, double number2)
     {
         return number1 / number2;
     }
 
     @Override
-    public Long inc(Long number)
+    public long inc(long number)
     {
-        return ++number;
+        return number + 1;
     }
 
     @Override
-    public Double mul(Double number1, Double number2)
+    public double mul(double number1, double number2)
     {
         return number1 * number2;
     }
 
     @Override
-    public Double neg(Double number)
+    public double neg(double number)
     {
         return -number;
     }
 
     @Override
-    public Double sub(Double number1, Double number2)
+    public double sub(double number1, double number2)
     {
         return number1 - number2;
     }
 
     @Override
-    public Double sum(List<Double> numbers)
+    public double sum(Collection<Number> numbers)
     {
-        return numbers.stream().mapToDouble(v -> v).sum();
+        return numbers.stream().mapToDouble(v -> v.doubleValue()).sum();
     }
 }

@@ -1,7 +1,6 @@
 package ru.jprod.core.script.api;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -26,15 +25,15 @@ public class ArithmeticScriptApiImpl implements ArithmeticScriptApi
     }
 
     @Override
-    public Double add(Double number1, Double number2)
+    public double add(double number1, double number2)
     {
         return arithmService.add(number1, number2);
     }
 
     @Override
-    public Double average(List<Number> numbers)
+    public double average(Collection<Number> numbers)
     {
-        return numbers.stream().mapToDouble(val -> val.doubleValue()).average().orElse(0.0);
+        return arithmService.average(numbers);
     }
 
     @Override
@@ -44,44 +43,44 @@ public class ArithmeticScriptApiImpl implements ArithmeticScriptApi
     }
 
     @Override
-    public Long dec(Long number)
+    public long dec(long number)
     {
         return arithmService.dec(number);
     }
 
     @Override
-    public Double div(Double number1, Double number2)
+    public double div(double number1, double number2)
     {
         return arithmService.div(number1, number2);
     }
 
     @Override
-    public Long inc(Long number)
+    public long inc(long number)
     {
         return arithmService.inc(number);
     }
 
     @Override
-    public Double mul(Double number1, Double number2)
+    public double mul(double number1, double number2)
     {
         return arithmService.mul(number1, number2);
     }
 
     @Override
-    public Double neg(Double number)
+    public double neg(double number)
     {
         return arithmService.neg(number);
     }
 
     @Override
-    public Double sub(Double number1, Double number2)
+    public double sub(double number1, double number2)
     {
         return arithmService.sub(number1, number2);
     }
 
     @Override
-    public Double sum(Collection<Number> numbers)
+    public double sum(Collection<Number> numbers)
     {
-        return numbers.stream().mapToDouble(v -> v.doubleValue()).sum();
+        return arithmService.sum(numbers);
     }
 }
