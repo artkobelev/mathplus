@@ -10,10 +10,6 @@
         </encoder>
     </appender>
 
-    <!-- Loggers -->
-    <logger name="ru.jprod.math.ArithmeticServiceImpl" level="debug"/>
-    <logger name="ru.jprod.rest.AlgorithmRestControllerImpl" level="debug"/>
-
     <!-- Root -->
     <root level="info">
         <appender-ref ref="CONSOLE"/>

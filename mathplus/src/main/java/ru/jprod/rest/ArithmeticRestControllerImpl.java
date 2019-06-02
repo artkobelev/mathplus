@@ -36,7 +36,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Inject
     private ArithmeticService mathService;
 
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
     public double add(double number1, double number2)
@@ -45,7 +45,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
         return Precision.round(mathService.add(number1, number2), mathProperties.getRounding());
     }
 
-    @RequestMapping(value = "avg", method = RequestMethod.GET)
+    @RequestMapping(value = "/avg", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
     public double average(@RequestParam(name = "numbers") Collection<Number> numbers)
@@ -54,7 +54,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
         return Precision.round(mathService.average(numbers), mathProperties.getRounding());
     }
 
-    @RequestMapping(value = "dec/{number}", method = RequestMethod.GET)
+    @RequestMapping(value = "/dec/{number}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
     public long dec(@PathVariable(name = "number") long number)
@@ -81,7 +81,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
         return mathService.inc(number);
     }
 
-    @RequestMapping(value = "mul", method = RequestMethod.GET)
+    @RequestMapping(value = "/mul", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
     public double mul(double number1, double number2)
@@ -90,7 +90,7 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
         return Precision.round(mathService.mul(number1, number2), mathProperties.getRounding());
     }
 
-    @RequestMapping(value = "sub", method = RequestMethod.GET)
+    @RequestMapping(value = "/sub", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Override
     public double sub(double number1, double number2)

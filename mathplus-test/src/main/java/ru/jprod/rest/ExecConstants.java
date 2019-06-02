@@ -9,4 +9,5 @@ package ru.jprod.rest;
 public class ExecConstants
 {
     public static final String ROOT_URI = "/rest/exec";
+    public static final String EXEC_ALGORITHM_URI = ROOT_URI + "/algth/{" + AlgorithmConstants.PATH_NAME + "}";
 }
