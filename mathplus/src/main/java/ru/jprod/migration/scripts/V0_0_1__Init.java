@@ -3,7 +3,7 @@ package ru.jprod.migration.scripts;
 import java.sql.Connection;
 
 import org.flywaydb.core.Flyway;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.flywaydb.core.api.migration.Context;
 
 import ru.jprod.migration.MigrationBaseScript;
 
@@ -16,7 +16,7 @@ import ru.jprod.migration.MigrationBaseScript;
 public class V0_0_1__Init extends MigrationBaseScript
 {
     @Override
-    public void migrate(JdbcTemplate template, Connection connection) throws Exception
+    public void migrate(Context context, Connection connection) throws Exception
     {
     }
 }

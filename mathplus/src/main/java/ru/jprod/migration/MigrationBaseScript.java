@@ -2,10 +2,10 @@ package ru.jprod.migration;
 
 import java.sql.Connection;
 
-import org.flywaydb.core.api.migration.spring.SpringJdbcMigration;
+import org.flywaydb.core.api.migration.BaseJavaMigration;
+import org.flywaydb.core.api.migration.Context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * Основной класс для миграций.
@@ -13,23 +13,23 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * @author artem
  * @since 22.05.2019
  */
-public abstract class MigrationBaseScript implements SpringJdbcMigration
+public abstract class MigrationBaseScript extends BaseJavaMigration
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(MigrationBaseScript.class);
 
     @Override
-    public void migrate(JdbcTemplate jdbcTemplate) throws Exception
+    public void migrate(Context context) throws Exception
     {
         LOGGER.info("Starting migration " + this.getClass().getName());
-        migrate(jdbcTemplate, jdbcTemplate.getDataSource().getConnection());
+        migrate(context, context.getConnection());
     }
 
     /**
      * Выполнение команд миграции
      *
-     * @param template   {@link JdbcTemplate}
+     * @param context   {@link Context}
      * @param connection подключение к базе
      * @throws Exception
      */
-    public abstract void migrate(JdbcTemplate template, Connection connection) throws Exception;
+    public abstract void migrate(Context context, Connection connection) throws Exception;
 }

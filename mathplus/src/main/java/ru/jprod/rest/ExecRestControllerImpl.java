@@ -3,6 +3,7 @@ package ru.jprod.rest;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,6 @@ import ru.jprod.core.model.Algorithm;
 import ru.jprod.core.model.algorithm.dao.DAOAlgorithm;
 import ru.jprod.core.script.ScriptService;
 import ru.jprod.util.JsonUtils;
-import ru.jprod.util.TxRunner;
 
 /**
  * REST контроллер для работы со скриптами
@@ -46,12 +46,11 @@ public class ExecRestControllerImpl implements ExecRestController
 
     @Override
     @RequestMapping(value = "/algth/{algthName}", method = RequestMethod.POST, produces = "application/json")
+    @Transactional
     public String executeAlgorithm(@PathVariable("algthName") String name, @RequestBody Map<String, Object> context)
     {
         Preconditions.checkNotNull(context);
-        return TxRunner.call(() -> {
-            Algorithm algorithm = daoAlgorithm.getExisting(name);
-            return jsonUtils.toJson(scriptService.execute(algorithm.getScript(), context));
-        });
+        Algorithm algorithm = daoAlgorithm.getExisting(name);
+        return jsonUtils.toJson(scriptService.execute(algorithm.getScript(), context));
     }
 }

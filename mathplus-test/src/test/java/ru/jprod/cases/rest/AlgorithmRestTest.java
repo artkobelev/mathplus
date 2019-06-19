@@ -110,6 +110,7 @@ public class AlgorithmRestTest extends AbstractTestCase
     @Test
     public void testGetAll()
     {
+        Set<String> beforeNames = Sets.newHashSet(DSLAlgorithm.getAll());
         // Выполнение действия
         Algorithm algorithm1 = DAOAlgorithm.create();
         Algorithm algorithm2 = DAOAlgorithm.create();
@@ -118,8 +119,8 @@ public class AlgorithmRestTest extends AbstractTestCase
 
         // Проверки
         Set<String> expectedNames = Sets.newHashSet(algorithm1.getName(), algorithm2.getName());
-        Set<String> actualNames = Sets.newHashSet(DSLAlgorithm.getAll());
-        Assert.assertEquals(expectedNames, actualNames);
+        Set<String> afterNames = Sets.newHashSet(DSLAlgorithm.getAll());
+        Assert.assertEquals(expectedNames, Sets.difference(afterNames, beforeNames));
     }
 
     /**

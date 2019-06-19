@@ -2,7 +2,7 @@ package ru.jprod.migration.scripts;
 
 import java.sql.Connection;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.flywaydb.core.api.migration.Context;
 
 import ru.jprod.core.model.Algorithm;
 import ru.jprod.migration.MigrationBaseScript;
@@ -20,7 +20,7 @@ import ru.jprod.util.sql.constraint.NotNullConstraint;
 public class V0_1_1__Add_column_script_to_algorithm extends MigrationBaseScript
 {
     @Override
-    public void migrate(JdbcTemplate template, Connection connection) throws Exception
+    public void migrate(Context context, Connection connection) throws Exception
     {
         String table = "tbl_algorithm";
         String columnName = "script";
