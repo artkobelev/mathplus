@@ -40,6 +40,8 @@ public class HibernateConfig
     private String cacheProvider;
     @Value("${hibernate.cache.region.factory_class}")
     private String cacheRegionFactory;
+    @Value("${hibernate.javax.cache.uri}")
+    private String cacheUri;
     @Value("${db.driver}")
     private String dbDriver;
     @Value("${db.password}")
@@ -134,6 +136,7 @@ public class HibernateConfig
         props.put(AvailableSettings.NON_CONTEXTUAL_LOB_CREATION, hbNonContextualCreation);
         props.put(ConfigSettings.PROVIDER, cacheProvider);
         props.put(ConfigSettings.MISSING_CACHE_STRATEGY, missingCacheStrategy);
+        props.put(ConfigSettings.CONFIG_URI, cacheUri);
         return factory.buildSessionFactory(new StandardServiceRegistryBuilder().applySettings(props).build());
     }
 

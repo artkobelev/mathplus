@@ -4,6 +4,7 @@ import static ru.jprod.util.Constants.EntityConstants.NAME_MAX_LENGTH;
 import static ru.jprod.util.Constants.EntityConstants.NAME_MIN_LENGTH;
 import static ru.jprod.util.Constants.EntityConstants.NAME_REGEX;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 
 import ru.jprod.core.model.dto.Exportable;
@@ -27,6 +30,8 @@ import ru.jprod.core.model.dto.Exportable;
  */
 @Entity
 @Table(name = "tbl_algorithm", indexes = { @Index(name = "idx_algorithm_name", columnList = "name") })
+@Cacheable
+@Cache(region = "AlgorithmCacheRegion", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Algorithm implements HasName, Exportable
 {
     @Id

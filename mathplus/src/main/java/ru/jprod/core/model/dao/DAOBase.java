@@ -152,10 +152,15 @@ public abstract class DAOBase<T extends HasName> extends AbstractDAO implements 
         CriteriaQuery<T> criteria = criteriaBuilder.createQuery(getType());
         Root<T> root = criteria.from(getType());
 
+        //@formatter:off
         Object object = session().createQuery(criteria
                 .select(root)
                 .where(criteriaBuilder.equal(root.<String>get(HasName.NAME), name))
-        ).setMaxResults(1).uniqueResult();
+            )
+            .setMaxResults(1)
+            .setCacheable(true)
+            .uniqueResult();
+        //@formatter:on
 
         return (T)object;
     }

@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,8 @@ import ru.jprod.util.ValidationUtils;
 @RequestMapping("/rest/algth")
 public class AlgorithmRestControllerImpl implements AlgorithmRestController
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlgorithmRestControllerImpl.class);
+
     @Inject
     private DAOAlgorithm daoAlgorithm;
 
