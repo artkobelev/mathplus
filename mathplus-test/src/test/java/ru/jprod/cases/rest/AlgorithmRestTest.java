@@ -156,13 +156,14 @@ public class AlgorithmRestTest extends AbstractTestCase
         Algorithm algorithm = DAOAlgorithm.create(name);
         DSLAlgorithm.create(algorithm);
 
-        algorithm.setName(GenerateUtils.createName());
-        algorithm.setScript(GenerateUtils.createText());
-        DSLAlgorithm.update(name, algorithm);
+        Algorithm expectedAlgorithm = DAOAlgorithm.create();
+        expectedAlgorithm.setScript(GenerateUtils.createText());
+        DSLAlgorithm.update(name, expectedAlgorithm);
+        algorithm.setName(expectedAlgorithm.getName());
 
         // Проверки
-        Algorithm updatedAlgorithm = DSLAlgorithm.get(algorithm.getName());
-        Assert.assertEquals(algorithm.getName(), updatedAlgorithm.getName());
-        Assert.assertEquals(algorithm.getScript(), updatedAlgorithm.getScript());
+        Algorithm updatedAlgorithm = DSLAlgorithm.get(expectedAlgorithm.getName());
+        Assert.assertEquals(expectedAlgorithm.getName(), updatedAlgorithm.getName());
+        Assert.assertEquals(expectedAlgorithm.getScript(), updatedAlgorithm.getScript());
     }
 }
