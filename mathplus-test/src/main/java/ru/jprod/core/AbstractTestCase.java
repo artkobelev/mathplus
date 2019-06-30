@@ -1,10 +1,10 @@
 package ru.jprod.core;
 
 import org.apache.http.Consts;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import com.jayway.awaitility.Awaitility;
 import com.jayway.awaitility.Duration;
@@ -40,7 +40,7 @@ public abstract class AbstractTestCase
     /**
      * Действия выполняемые после завершения тестового класса.
      */
-    @AfterClass
+    @AfterAll
     public static void afterClass()
     {
         cleaner.clean(Cleaner.QueueMode.CLASS);
@@ -49,7 +49,7 @@ public abstract class AbstractTestCase
     /**
      * Действия выполняемые перед выполнением тестового класса.
      */
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass()
     {
         cleaner.switchTo(Cleaner.QueueMode.CLASS);
@@ -58,7 +58,7 @@ public abstract class AbstractTestCase
     /**
      * Действия выполняемые после завершения тестового метода.
      */
-    @After
+    @AfterEach
     public void after()
     {
         cleaner.clean(Cleaner.QueueMode.TEST);
@@ -67,7 +67,7 @@ public abstract class AbstractTestCase
     /**
      * Действия выполняемые перед выполнением тестового метода.
      */
-    @Before
+    @BeforeEach
     public void before()
     {
         cleaner.switchTo(Cleaner.QueueMode.TEST);

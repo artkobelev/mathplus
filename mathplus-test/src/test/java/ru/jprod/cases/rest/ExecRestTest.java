@@ -2,8 +2,8 @@ package ru.jprod.cases.rest;
 
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.Maps;
 
@@ -47,7 +47,7 @@ public class ExecRestTest extends AbstractTestCase
         long result = DSLExec.exec(script, Long.class);
 
         // Проверки
-        Assert.assertEquals(number1 + number2, result);
+        Assertions.assertEquals(number1 + number2, result);
     }
 
     /**
@@ -82,6 +82,6 @@ public class ExecRestTest extends AbstractTestCase
         long result = DSLExec.execAlgorithm(algorithm.getName(), context, Long.class);
 
         // Проверки
-        Assert.assertEquals(55, result);
+        Assertions.assertEquals(55, result);
     }
 }

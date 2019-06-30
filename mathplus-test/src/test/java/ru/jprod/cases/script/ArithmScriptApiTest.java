@@ -3,8 +3,8 @@ package ru.jprod.cases.script;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -50,7 +50,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(number1 + number2, result, DELTA);
+        Assertions.assertEquals(number1 + number2, result, DELTA);
     }
 
     /**
@@ -80,7 +80,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(numbers.stream().mapToDouble(val -> val).average().orElse(0.0), result, DELTA);
+        Assertions.assertEquals(numbers.stream().mapToDouble(val -> val).average().orElse(0.0), result, DELTA);
     }
 
     /**
@@ -107,7 +107,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         long result = DSLExec.exec(script, Long.class);
 
         // Проверки
-        Assert.assertEquals(number - 1, result);
+        Assertions.assertEquals(number - 1, result);
     }
 
     /**
@@ -135,7 +135,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(number1 / number2, result, DELTA);
+        Assertions.assertEquals(number1 / number2, result, DELTA);
     }
 
     /**
@@ -162,7 +162,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         long result = DSLExec.exec(script, Long.class);
 
         // Проверки
-        Assert.assertEquals(number + 1, result);
+        Assertions.assertEquals(number + 1, result);
     }
 
     /**
@@ -190,7 +190,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(number1 * number2, result, DELTA);
+        Assertions.assertEquals(number1 * number2, result, DELTA);
     }
 
     /**
@@ -217,7 +217,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         long result = DSLExec.exec(script, Long.class);
 
         // Проверки
-        Assert.assertEquals(-number, result);
+        Assertions.assertEquals(-number, result);
     }
 
     /**
@@ -245,7 +245,7 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(number1 - number2, result, DELTA);
+        Assertions.assertEquals(number1 - number2, result, DELTA);
     }
 
     /**
@@ -275,6 +275,6 @@ public class ArithmScriptApiTest extends AbstractTestCase
         double result = DSLExec.exec(script, Double.class);
 
         // Проверки
-        Assert.assertEquals(numbers.stream().mapToDouble(val -> val).sum(), result, DELTA);
+        Assertions.assertEquals(numbers.stream().mapToDouble(val -> val).sum(), result, DELTA);
     }
 }

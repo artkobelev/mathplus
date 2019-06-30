@@ -2,8 +2,8 @@ package ru.jprod.cases.rest;
 
 import java.util.Set;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.Sets;
 
@@ -89,8 +89,8 @@ public class AlgorithmRestTest extends AbstractTestCase
         Algorithm actual = DSLAlgorithm.get(algorithm.getName());
 
         // Проверки
-        Assert.assertEquals(algorithm.getName(), actual.getName());
-        Assert.assertEquals(algorithm.getScript(), actual.getScript());
+        Assertions.assertEquals(algorithm.getName(), actual.getName());
+        Assertions.assertEquals(algorithm.getScript(), actual.getScript());
     }
 
     /**
@@ -120,7 +120,7 @@ public class AlgorithmRestTest extends AbstractTestCase
         // Проверки
         Set<String> expectedNames = Sets.newHashSet(algorithm1.getName(), algorithm2.getName());
         Set<String> afterNames = Sets.newHashSet(DSLAlgorithm.getAll());
-        Assert.assertEquals(expectedNames, Sets.difference(afterNames, beforeNames));
+        Assertions.assertEquals(expectedNames, Sets.difference(afterNames, beforeNames));
     }
 
     /**
@@ -163,7 +163,7 @@ public class AlgorithmRestTest extends AbstractTestCase
 
         // Проверки
         Algorithm updatedAlgorithm = DSLAlgorithm.get(expectedAlgorithm.getName());
-        Assert.assertEquals(expectedAlgorithm.getName(), updatedAlgorithm.getName());
-        Assert.assertEquals(expectedAlgorithm.getScript(), updatedAlgorithm.getScript());
+        Assertions.assertEquals(expectedAlgorithm.getName(), updatedAlgorithm.getName());
+        Assertions.assertEquals(expectedAlgorithm.getScript(), updatedAlgorithm.getScript());
     }
 }
