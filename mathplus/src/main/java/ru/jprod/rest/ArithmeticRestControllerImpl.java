@@ -29,8 +29,6 @@ import ru.jprod.math.ArithmeticServiceImpl;
 @RequestMapping("/rest/arithm")
 public class ArithmeticRestControllerImpl implements ArithmeticRestController
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArithmeticServiceImpl.class);
-
     @Inject
     private MathProperties mathProperties;
     @Inject
@@ -41,7 +39,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double add(double number1, double number2)
     {
-        LOGGER.debug("adding {} and {} with scale {}", number1, number2, mathProperties.getRounding());
         return Precision.round(mathService.add(number1, number2), mathProperties.getRounding());
     }
 
@@ -50,7 +47,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double average(@RequestParam(name = "numbers") Collection<Number> numbers)
     {
-        LOGGER.debug("average of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.average(numbers), mathProperties.getRounding());
     }
 
@@ -59,7 +55,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public long dec(@PathVariable(name = "number") long number)
     {
-        LOGGER.debug("dec {}", number);
         return mathService.dec(number);
     }
 
@@ -68,7 +63,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double div(double number1, double number2)
     {
-        LOGGER.debug("dividing {} on {} with scale {}", number1, number2, mathProperties.getRounding());
         return Precision.round(mathService.div(number1, number2), mathProperties.getRounding());
     }
 
@@ -77,7 +71,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public long inc(@PathVariable(name = "number") long number)
     {
-        LOGGER.debug("inc {}", number);
         return mathService.inc(number);
     }
 
@@ -86,7 +79,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double mul(double number1, double number2)
     {
-        LOGGER.debug("multiply {} and {} with scale {}", number1, number2, mathProperties.getRounding());
         return Precision.round(mathService.mul(number1, number2), mathProperties.getRounding());
     }
 
@@ -95,7 +87,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double sub(double number1, double number2)
     {
-        LOGGER.debug("subbing {} and {} with scale {}", number1, number2, mathProperties.getRounding());
         return Precision.round(mathService.sub(number1, number2), mathProperties.getRounding());
     }
 
@@ -104,7 +95,6 @@ public class ArithmeticRestControllerImpl implements ArithmeticRestController
     @Override
     public double sum(@RequestParam(name = "numbers") Collection<Number> numbers)
     {
-        LOGGER.debug("sum of {} with scale {}", numbers, mathProperties.getRounding());
         return Precision.round(mathService.sum(numbers), mathProperties.getRounding());
     }
 }
